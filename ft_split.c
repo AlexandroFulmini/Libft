@@ -44,7 +44,7 @@ int ft_len_word(char *str, char *charset, int i)
     int len;
 
     len = 0;
-    while (!ft_is_sep(str[i], charset) && str[i])
+    while (!(ft_is_sep(str[i], charset)) && str[i])
     {
         len++;
         i++;

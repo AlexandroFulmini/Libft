@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void *ft_memchr(char *s, int c, int n)
+void *ft_memchr(char *s, int c, size_t n)
 {
     unsigned char *str;
 

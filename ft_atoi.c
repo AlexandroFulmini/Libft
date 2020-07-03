@@ -1,24 +1,24 @@
 #include "libft.h"
 
-int ft_atoi(const char *nptr)
+int ft_atoi(char *str)
 {
     int sign;
     unsigned int nb;
 
     sign = 1;
-    while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
-        nptr++;
-    if (*nptr == '+' || *nptr == '-')
+    while (*str == ' ' || (*str >= 9 && *str <= 13))
+        str++;
+    if (*str == '+' || *str == '-')
     {
-        if (*nptr == '-')
-            sign = -1;
-        nptr++;
+        if (*str == '-')
+            sign *= -1;
+        str++;
     }
     nb = 0;
-    while (*nptr >= 48 && *nptr <= 57)
+    while (*str >= 48 && *str <= 57)
     {
-        nb = (nb * 10) + *nptr - 48;
-        nptr++;
+        nb = (nb * 10) + *str - 48;
+        str++;
     }
     return ((int)(nb * sign));
 }
