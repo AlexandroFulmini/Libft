@@ -2,22 +2,25 @@
 
 char *ft_strnstr(const char *s1, const char *s2, unsigned int len)
 {
-    unsigned int i;
-    unsigned int j;
+    size_t i;
+    size_t j;
 
-    i = 0;
-    if (s2 == 0 || *s2 == 0)
-        return ((char *)s1);
-    while (s1[i] && i < len)
+    if (*s2)
     {
-        j = 0;
-        while (j + i < len && s1[i + j] == s2[j])
+        i = 0;
+        while (s1[i] && i < len)
         {
-            j++;
-            if (s2[j] == 0)
-                return ((char *)&s1[i]);
+            if (s1[i] == s2[0])
+            {
+                j = 1;
+                while (i + j < len && s2[j] && s1[i + j] == s2[j])
+                    j++;
+            if (s2[j] == '\0')
+                return((char*)&s1[i]);
+            }
+            i++;
         }
-        i++;
+        return (0);
     }
-    return (0);
+    return ((char *)s1);
 }
