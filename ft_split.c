@@ -1,82 +1,82 @@
-#include <stdlib.h>
-#include <unistd.h>
 #include "libft.h"
+#include <stdlib.h>
 
-int ft_is_sep(char c, char *charset)
+static size_t		count(char const *s, char c)
 {
-    int i;
+	size_t i;
 
-    i = 0;
-    while (charset[i])
-    {
-        if (charset[i] == c)
-            return (1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (*s)
+	{
+		if (*s == c)
+		{
+			s++;
+			continue ;
+		}
+		i++;
+		while (*s && *s != c)
+			s++;
+	}
+	return (i);
 }
 
-int ft_count_words(char *str, char *charset)
+static char			*ft_strndup(const char *s, int n)
 {
-    int nbr_of_words;
-    int is_word;
-    int i;
+	char	*map;
+	int		i;
 
-    i = 0;
-    is_word = 0;
-    nbr_of_words = 0;
-    while (str[i])
-    {
-        if (ft_is_sep(str[i], charset))
-            is_word = 0;
-        else if (!ft_is_sep(str[i], charset) && (is_word == 0))
-        {
-            is_word = 1;
-            nbr_of_words++;
-        }
-        i++;
-    }
-    return (nbr_of_words);
+	if (!(map = malloc(sizeof(char) * (n + 1))))
+		return (map);
+	i = 0;
+	while (i < n)
+	{
+		map[i] = s[i];
+		i++;
+	}
+	map[i] = '\0';
+	return (map);
 }
 
-int ft_len_word(char *str, char *charset, int i)
+static void			*destroy_strs(char **strs)
 {
-    int len;
+	int i;
 
-    len = 0;
-    while (!(ft_is_sep(str[i], charset)) && str[i])
-    {
-        len++;
-        i++;
-    }
-    return (len);
+	i = 0;
+	while (strs[i] != NULL)
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (NULL);
 }
 
-char **ft_split(char *str, char *charset)
+char				**ft_split(char const *s, char c)
 {
-    char **split;
-    int len_word;
-    int i;
-    int j;
+	char	**res;
+	int		i;
+	int		j;
 
-    i = 0;
-    j = 0;
-    split = malloc(sizeof(char *) * (ft_count_words(str, charset) + 1));
-    while (i < ft_count_words(str, charset))
-    {
-        len_word = 0;
-        while (ft_is_sep(str[j], charset) && str[j])
-            j++;
-        split[i] = malloc(sizeof(char *) * (ft_len_word(str, charset, j) + 1));
-        while (len_word < ft_len_word(str, charset, j))
-        {
-            split[i][len_word] = str[len_word + j];
-            len_word++;
-        }
-        split[i][len_word] = '\0';
-        j = j + ft_len_word(str, charset, j);
-        i++;
-    }
-    split[i] = 0;
-    return (split);
+	if (!s)
+		return (NULL);
+	if (!(res = malloc(sizeof(char*) * (count(s, c) + 1))))
+		return (NULL);
+	j = 0;
+	while (*s)
+	{
+		if (*s == c)
+		{
+			s++;
+			continue ;
+		}
+		i = 0;
+		while (s[i] && s[i] != c)
+			i++;
+		if (!(res[j++] = ft_strndup(s, i)))
+			return (destroy_strs(res));
+		s += i;
+	}
+	res[j] = 0;
+	return (res);
 }
+
