@@ -25,6 +25,7 @@ void ft_lstdelone(t_list *lst, void (*del)(void *));
 void ft_lstiter(t_list *lst, void (*f)(void *));
 t_list *ft_lstnew(void *constant);
 t_list *ft_lstlast(t_list *road);
+t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int ft_lstsize(t_list *lst);
 void *ft_memccpy(void *dst, const void *src, int c, size_t n);
 void *ft_memchr(const void *s, int c, size_t n);
