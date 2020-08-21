@@ -95,4 +95,4 @@ print:
 
 re: fclean all
 
-.PHONY: all clean fclean re bclean bonus 
+.PHONY: all clean fclean re bclean bonus print 
