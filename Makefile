@@ -44,7 +44,6 @@ SRC_BONUS = ft_lstadd_back.c \
 			ft_lstdelone.c \
 			ft_lstiter.c \
 			ft_lstlast.c \
-			ft_lstmap.c \
 			ft_lstnew.c \
 			ft_lstsize.c \
 
@@ -65,9 +64,9 @@ AR = ar rc
 			
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(OBJ_BONUS)
 	@echo "Making library"
-	@$(AR) $(NAME) $(OBJ) $(HEADER)
+	@$(AR) $(NAME) $(OBJ) $(OBJ_BONUS) $(HEADER)
 
 .c.o:
 	@echo "Compiling $@"
@@ -89,6 +88,10 @@ bclean: clean
 	@echo "Removing Bonus"
 	@$(RM) $(OBJ_BONUS)
 
+print: 
+	@echo $(OBJ)
+	@echo $(OBJ_BONUS)
+
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re bclean bonus 
