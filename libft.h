@@ -1,13 +1,13 @@
-#ifndef _LIBFT_H
-#define _LIBFT_H
+#ifndef	_LIBFT_H
+#define	_LIBFT_H
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef struct s_list
+typedef	struct	s_list
 {
-    void *content;
-    struct s_list *next;
-} t_list;
+	void		*content;
+	struct s_list	*next;
+}		t_list;
 
 int ft_atoi(char *str);
 void ft_bzero(void *s, size_t n);
