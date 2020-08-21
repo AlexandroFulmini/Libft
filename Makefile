@@ -43,6 +43,7 @@ SRC_BONUS = ft_lstadd_back.c \
 			ft_lstclear.c \
 			ft_lstdelone.c \
 			ft_lstiter.c \
+			ft_lstmap.c \
 			ft_lstlast.c \
 			ft_lstnew.c \
 			ft_lstsize.c \
