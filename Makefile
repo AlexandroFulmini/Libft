@@ -67,7 +67,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ) $(OBJ_BONUS)
 	@echo "Making library"
-	@$(AR) $(NAME) $(OBJ) $(OBJ_BONUS) $(HEADER)
+	@$(AR) $(NAME) $(OBJ) $(HEADER)
 
 .c.o:
 	@echo "Compiling $@"
@@ -95,4 +95,4 @@ print:
 
 re: fclean all
 
-.PHONY: all clean fclean re bclean bonus print 
+.PHONY: all clean fclean re bclean bonus 
