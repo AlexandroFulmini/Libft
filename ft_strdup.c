@@ -1,9 +1,9 @@
 #include "libft.h"
 
-char *ft_strdup(char *src)
+char	*ft_strdup(char *src)
 {
-	char *ptr;
-	int len;
+	char	*ptr;
+	int	len;
 
 	len = 0;
 	while (src[len])
