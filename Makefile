@@ -63,18 +63,21 @@ RM = rm -rf
 
 AR = ar rc
 			
-all:	$(NAME)
 
 $(NAME):	$(OBJ) $(OBJ_BONUS)
-	@echo "Making library"
+	@echo "Making assignment"
 	@$(AR) $(NAME) $(OBJ) $(HEADER)
 
 .c.o:
 	@echo "Compiling $@"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+all: $(NAME) $(OBJ)
+	@echo "Making Library"
+	@$(AR) $(NAME) $(OBJ)
+
 bonus: $(NAME) $(OBJ_BONUS)
-	@echo "Making bonus" 
+	@echo "Making Bonus" 
 	@$(AR) $(NAME) $(OBJ_BONUS)
 
 clean:
