@@ -72,29 +72,25 @@ $(NAME):	$(OBJ) $(OBJ_BONUS)
 	@echo "Compiling $@"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME) $(OBJ)
+all: $(OBJ)
 	@echo "Making Library"
 	@$(AR) $(NAME) $(OBJ)
 
-bonus: $(NAME) $(OBJ_BONUS)
+bonus: $(OBJ_BONUS)
 	@echo "Making Bonus" 
 	@$(AR) $(NAME) $(OBJ_BONUS)
 
 clean:
-	@echo "Removing .o files"
+	@echo "Removing regular files"
 	@$(RM) $(OBJ)
 
-fclean: clean
+fclean:
 	@echo "Removing lib"
 	@$(RM) $(NAME) $(OBJ_BONUS) $(OBJ)
 
-bclean: clean
+bclean:
 	@echo "Removing Bonus"
 	@$(RM) $(OBJ_BONUS)
-
-print: 
-	@echo $(OBJ)
-	@echo $(OBJ_BONUS)
 
 re: fclean all
 
