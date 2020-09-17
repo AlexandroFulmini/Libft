@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afulmini <afulmini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afulmini <afulmini@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 14:58:30 by afulmini          #+#    #+#             */
 /*   Updated: 2020/08/23 16:20:45 by afulmini         ###   ########.fr       */
@@ -14,8 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	unsigned int i;
+	size_t	i;
 
+	if (s == 0 || *s == 0)
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;
