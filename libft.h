@@ -50,8 +50,6 @@ void ft_putendl_fd(char *s, int fd);
 void ft_putnbr_fd(int n, int fd);
 void ft_putstr_fd(char *s, int fd);
 char **ft_split(char const *s, char c);
-char *ft_strcat(char *dest, char *src);
-char *ft_strcpy(char *dest, char *src);
 char *ft_strchr(const char *s, int c);
 char *ft_strdup(char *src);
 char *ft_strjoin(char const *s1, char const *s2);
