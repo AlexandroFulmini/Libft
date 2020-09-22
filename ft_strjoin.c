@@ -16,7 +16,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*result;
 	unsigned int	i;
-	unsigned int	ij;
+	unsigned int	j;
 
 	if (!s1 || !s2)
 		return (NULL);
