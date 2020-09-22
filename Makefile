@@ -82,10 +82,6 @@ $(NAME):	$(OBJ)
 	@echo "Compiling $@"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(OBJ)
-	@echo "Making Library"
-	@$(AR) $(NAME) $(OBJ)
-
 bonus: $(OBJ_BONUS)
 	@echo "Making Bonus" 
 	@$(AR) $(NAME) $(OBJ_BONUS)
