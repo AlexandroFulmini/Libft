@@ -14,16 +14,16 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char		*result;
+	char			*result;
 	unsigned int	i;
-	unsigned int	j;
+	unsigned int	ij;
 
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(result = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char))))
+	if (!(result = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1)
+	* sizeof(char))))
 		return (0);
 	i = 0;
-
 	while (s1[i])
 	{
 		result[i] = s1[i];
