@@ -6,16 +6,16 @@
 /*   By: afulmini <afulmini@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 14:58:30 by afulmini          #+#    #+#             */
-/*   Updated: 2020/08/23 16:20:45 by afulmini         ###   ########.fr       */
+/*   Updated: 2020/12/17 10:07:50 by afulmini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t		count(char const *s, char c)
+static size_t	count(char const *s, char c)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (*s)
@@ -32,10 +32,10 @@ static size_t		count(char const *s, char c)
 	return (i);
 }
 
-static char			*ft_strndup(const char *s, int n)
+char			*ft_strndup(const char *s, size_t n)
 {
 	char	*map;
-	int		i;
+	size_t	i;
 
 	if (!(map = malloc(sizeof(char) * (n + 1))))
 		return (map);
@@ -49,9 +49,9 @@ static char			*ft_strndup(const char *s, int n)
 	return (map);
 }
 
-static void			*destroy_strs(char **strs)
+static void		*destroy_strs(char **strs)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (strs[i] != NULL)
@@ -63,7 +63,7 @@ static void			*destroy_strs(char **strs)
 	return (NULL);
 }
 
-char				**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		i;

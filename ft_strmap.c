@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afulmini <afulmini@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/23 14:58:30 by afulmini          #+#    #+#             */
-/*   Updated: 2020/12/17 10:09:26 by afulmini         ###   ########.fr       */
+/*   Created: 2020/12/17 09:07:13 by afulmini          #+#    #+#             */
+/*   Updated: 2020/12/17 09:09:13 by afulmini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+char	*ft_map(char const *s, char (*f)(char))
 {
-	size_t i;
-	size_t j;
+	char	*new;
+	size_t	i;
 
-	if (*s2)
+	if (!s)
+		return (NULL);
+	new = ft_strnew(ft_strlen(s));
+	if (!new)
+		return (NULL);
+	if (f)
 	{
 		i = 0;
-		while (s1[i] && i < len)
-		{
-			if (s1[i] == s2[0])
-			{
-				j = 1;
-				while (i + j < len && s2[j] && s1[i + j] == s2[j])
-					j++;
-				if (s2[j] == '\0')
-					return ((char*)&s1[i]);
-			}
-			i++;
-		}
-		return (0);
+		while (*s)
+			new[i++] = (*f)(*s++);
 	}
-	return ((char *)s1);
+	return (new);
 }

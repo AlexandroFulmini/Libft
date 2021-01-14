@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afulmini <afulmini@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/23 14:58:30 by afulmini          #+#    #+#             */
-/*   Updated: 2020/12/17 10:09:26 by afulmini         ###   ########.fr       */
+/*   Created: 2020/12/16 18:25:26 by afulmini          #+#    #+#             */
+/*   Updated: 2020/12/16 18:26:48 by afulmini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
 
-	if (*s2)
+	i = 0;
+	while (src[i])
 	{
-		i = 0;
-		while (s1[i] && i < len)
-		{
-			if (s1[i] == s2[0])
-			{
-				j = 1;
-				while (i + j < len && s2[j] && s1[i + j] == s2[j])
-					j++;
-				if (s2[j] == '\0')
-					return ((char*)&s1[i]);
-			}
-			i++;
-		}
-		return (0);
+		dest[i] = src[i];
+		i++;
 	}
-	return ((char *)s1);
+	dest[i] = '\0';
+	return (dest);
 }

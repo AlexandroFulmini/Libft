@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afulmini <afulmini@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/23 14:58:30 by afulmini          #+#    #+#             */
-/*   Updated: 2020/12/17 10:09:26 by afulmini         ###   ########.fr       */
+/*   Created: 2020/12/15 22:13:32 by afulmini          #+#    #+#             */
+/*   Updated: 2020/12/15 22:15:46 by afulmini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+void	ft_putnbr(int n)
 {
-	size_t i;
-	size_t j;
+	long	i;
 
-	if (*s2)
+	i = n;
+	if (i < 0)
 	{
-		i = 0;
-		while (s1[i] && i < len)
-		{
-			if (s1[i] == s2[0])
-			{
-				j = 1;
-				while (i + j < len && s2[j] && s1[i + j] == s2[j])
-					j++;
-				if (s2[j] == '\0')
-					return ((char*)&s1[i]);
-			}
-			i++;
-		}
-		return (0);
+		ft_putchar_fd('-', 1);
+		i = i * (-1);
 	}
-	return ((char *)s1);
+	if (i > 9)
+	{
+		ft_putnbr(i / 10);
+		ft_putnbr(i % 10);
+	}
+	else
+		ft_putchar_fd(i + '0', 1);
 }
