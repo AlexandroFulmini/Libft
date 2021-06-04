@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_old.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afulmini <afulmini@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/23 14:58:30 by afulmini          #+#    #+#             */
-/*   Updated: 2020/12/17 10:07:50 by afulmini         ###   ########.fr       */
+/*   Updated: 2021/06/04 14:19:42 by afulmini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void		*destroy_strs(char **strs)
 	return (NULL);
 }
 
-char			**ft_split(char const *s, char c)
+char			**ft_split_2(char const *s, char c)
 {
 	char	**res;
 	int		i;

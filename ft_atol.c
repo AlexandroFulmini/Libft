@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afulmini <afulmini@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/23 14:58:30 by afulmini          #+#    #+#             */
-/*   Updated: 2021/03/16 10:50:54 by afulmini         ###   ########.fr       */
+/*   Created: 2021/06/03 18:38:55 by afulmini          #+#    #+#             */
+/*   Updated: 2021/06/04 14:19:13 by afulmini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+long	ft_atol(const char *nptr)
 {
-	char			*result;
-	unsigned int	i;
-	unsigned int	j;
+	int				sign;
+	unsigned long	nb;
 
-	if (!s1 || !s2)
-		return (NULL);
-	if (!(result = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1)
-	* sizeof(char))))
-		return (0);
-	i = 0;
-	while (s1[i])
+	sign = 1;
+	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
 	{
-		result[i] = s1[i];
-		i++;
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
 	}
-	j = 0;
-	while (s2[j])
+	nb = 0;
+	while (*nptr >= 48 && *nptr <= 57)
 	{
-		result[i] = s2[j];
-		i++;
-		j++;
+		nb = (nb * 10) + *nptr - 48;
+		nptr++;
 	}
-	result[i] = '\0';
-	return (result);
+	return ((long)(nb * sign));
 }
